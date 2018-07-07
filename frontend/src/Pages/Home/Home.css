@@ -1,0 +1,45 @@
+.home-body{
+    border: 1px solid #bdb8b8;    
+    margin: auto;
+    margin-top: 30px;   
+    padding: 10px;
+    width: 50%;
+    
+}
+.button-join{
+    width: 100px;
+    height: 30px;
+    border-radius: 5px;
+    color: white;
+    background-color: rgb(0, 174, 255)    
+}
+.home-layout{
+    display: flex;
+}
+.home-button{
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 20px;
+}
+.home-content{
+    margin-left: 50px;
+}
+/*Home.js --------------------------------------------------------  */
+
+.message-content{
+    width: 80%;
+    height: 40%;
+}
+/*Content.js --------------------------------------------------------  */
+
+.avatar-image{
+    border-radius: 50%;
+    margin-bottom: 20px;
+}
+.avatar-label{
+    display: flex;
+    margin-left: 20px;
+}
+/*Avatar.js --------------------------------------------------------  */
+
+

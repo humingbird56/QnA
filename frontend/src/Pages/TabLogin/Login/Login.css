@@ -1,0 +1,24 @@
+
+.login-body{
+    text-align: center;
+}
+.login-image{
+    width: 30%;
+    margin: auto;
+    display: flex;
+}
+.login-email{
+    font-size: 20px;
+    margin-bottom: 2%;
+    border-radius: 7px;
+    border: 1px solid;
+    padding: 5px;
+}
+
+.login-button{
+    width: 30%;
+    font-size: 15px; 
+    color: white;
+    background-color: rgb(0, 174, 255);
+    margin-bottom: 30px;
+}
