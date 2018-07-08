@@ -10,6 +10,10 @@ module.exports = (sequelize, DataTypes) => {
       foreignKey: 'questionId',
       as: 'answers',
     });
+    question.belongsTo(models.user, {
+      foreignKey: 'userId',
+      onDelete: 'CASCADE',
+    });
   };
 
   return question;

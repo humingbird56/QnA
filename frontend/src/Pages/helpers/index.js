@@ -2,16 +2,16 @@ import jwt_decode from "jwt-decode"
 
 const helpers = {
   setToken: token => {
-    window.localStorage.setItem("user", token)
+    window.localStorage.setItem("token", token)
   },
 
   getToken: () => {
-    const token = window.localStorage.getItem("user")
+    const token = window.localStorage.getItem("token")
     return token
   },
 
   deleteToken: () => {
-    window.localStorage.removeItem("user")
+    window.localStorage.removeItem("token")
   },
 
   decodeToken: () => {

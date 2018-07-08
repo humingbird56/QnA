@@ -1,14 +1,26 @@
 const answer = require('../models').answer;
+const jwt = require('jsonwebtoken')
 
 module.exports = {
   list(req, res) {
-    return answer.findAll()
+    return answer.findAll({
+      include: [{
+        all: true
+      }]
+    })
       .then(data => res.status(201).send(data))
       .catch(err => res.status(400).send(err));
   },
   retrieve(req, res) {
     return answer
-      .findById(req.params.id)
+      .findById({
+        where:{
+          id : req.params.id
+        },
+        include: [{
+          all: true
+        }]
+      })
       .then(data => {
         if (!data) {
           return res.status(404).send({
@@ -20,10 +32,12 @@ module.exports = {
       .catch(error => res.status(400).send(error));
   },  
   create(req, res) {
+    let decoded = jwt.verify(req.headers.token, process.env.JWT_SECRET);
     return answer
       .create({
         answer: req.body.answer,
-        userId:req.body.userId
+        questionId: req.body.questionId,
+        userId: decoded.id
       })
       .then(data => res.status(201).send(data))
       .catch(err => res.status(400).send(err));

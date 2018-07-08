@@ -7,6 +7,7 @@ var path = require('path');
 var index = require('./routes/index');
 var app = express();
 app.use(cors())
+require('dotenv').config()
 
 // view engine setup
 
@@ -28,7 +29,7 @@ app.use(function(req, res, next) {
 app.use(function(err, req, res, next) {
   // render the error page
   res.status(err.status || 500);
-  res.render('error');
+  res.send(err);
 });
 
 module.exports = app;

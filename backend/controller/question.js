@@ -1,14 +1,25 @@
 const question = require('../models').question;
-
+const model = require('../models')
 module.exports = {
   list(req, res) {
-    return question.findAll()
+    return question.findAll({
+      include: [{
+        all: true
+      }]
+    })
       .then(data => res.status(201).send(data))
-      .catch(err => res.status(400).send(err));
+      .catch(err => console.log(err));
   },
   retrieve(req, res) {
     return question
-      .findById(req.params.id)
+      .findOne({
+        where: {
+          id: req.params.id
+        },
+        include: [{
+          all: true
+        }]
+      })
       .then(data => {
         if (!data) {
           return res.status(404).send({

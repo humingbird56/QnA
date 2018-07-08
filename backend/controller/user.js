@@ -1,7 +1,6 @@
 const jwt = require('jsonwebtoken')
 const db =require('../models')
 const user = require('../models').user;
-const secret = 'bijikuda'
 
 module.exports={
   signUp(req, res) {
@@ -46,7 +45,7 @@ module.exports={
             username: dataUser.dataValues.username,
             firstname: dataUser.dataValues.firstname,
             email: dataUser.dataValues.email
-          }, secret)
+          }, process.env.JWT_SECRET)
           res.send({token})
         })
         .catch(err => res.send(err))
@@ -95,7 +94,11 @@ module.exports={
   },
 
   getUser(req, res){
-    return user.findAll()
+    return user.findAll({
+      include: [
+        {all: true}
+      ]
+    })
       .then(data => res.status(201).send(data))
       .catch(err => res.status(400).send(err));
     }

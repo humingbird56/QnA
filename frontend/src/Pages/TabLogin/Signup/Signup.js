@@ -6,7 +6,9 @@ class signup extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            signupName: "",
+            signupUsername: "",
+            firstname: '',
+            lastname: '',
             signupEmail: "",
             signupPassword: ""
         };
@@ -30,17 +32,17 @@ class signup extends Component {
         event.preventDefault()
     
         const payload = {
-        name: this.state.signupName,
+        username: this.state.signupUsername,
         email: this.state.signupEmail,
         password: this.state.signupPassword
         }
     
         axios
-        .post(`${process.env.REACT_APP_API_URL}/signup`, payload)
+        .post(`${process.env.REACT_APP_API_URL}/register`, payload)
         .then(response => {
             alert(`Sign up success!`)
             this.setState({
-                signupName: "",
+                signupUsername: "",
                 signupEmail: "",
                 signupPassword: ""
             })
@@ -62,7 +64,13 @@ render() {
             <br/>
             <br/>
             <div>
-            <input type="text" id="signupName" name="signupName" className="signup-email" placeholder="name" value={this.state.signupName} onChange={this.handleChange} />
+            <input type="text" id="signupFirstname" name="signupFirstname" className="signup-email" placeholder="firstname" value={this.state.firstname} onChange={this.handleChange} />
+            </div>
+            <div>
+            <input type="text" id="signupLastname" name="signupLastname" className="signup-email" placeholder="lastname" value={this.state.last} onChange={this.handleChange} />
+            </div>
+            <div>
+            <input type="text" id="signupUsername" name="signupUsername" className="signup-email" placeholder="name" value={this.state.signupUsername} onChange={this.handleChange} />
             </div>
             <div>
             <input type="email" id="signupEmail" name="signupEmail" className="signup-email" placeholder="email" value={this.state.signupEmail} onChange={this.handleChange} />
