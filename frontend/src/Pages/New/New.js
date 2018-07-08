@@ -8,9 +8,7 @@ class New extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            title:"",
-            location:"",
-            message:""
+            question:""
         };  
         }
 
@@ -27,13 +25,11 @@ class New extends React.Component {
         event.preventDefault();
     
         const payload = {
-        title: this.state.title,
-        location: this.state.location,
-        message: this.state.message
+        question: this.state.question
         };
     
         axios
-        .post(`/event`, payload)
+        .post(`${process.env.REACT_APP_API_URL}/question`, payload)
         .then(response => {
             // NOTIFY ASKER
             console.log(response.data);
@@ -53,21 +49,13 @@ render()
         
         <div className="container new">
             <div className="new-body">
-                    <div>
-                        <label className="new-label">Title Event</label>
-                        <input className="input title" onChange={this.handleChange} id="titlenew" name="title" placeholder="Title"/>
-                    </div>
-                    <div>
-                        <label className="new-label">Location</label>
-                        <input className="input location" onChange={this.handleChange} id="locationnew" name="location"  placeholder="Location"></input>
-                    </div>
-                    <div>
-                        <label className="label-message">Message</label>
-                        <textarea className="new-textarea" onChange={this.handleChange} id="messagenew"  name="message" placeholder="Type Your Message" rows="4"></textarea>
-                    </div>
-                    <div className="new-button">
-                        <button className="new-button-create" onClick={this.handleSubmit}>Create</button>
-                    </div>
+              <div className='content'>
+                  <label className="label-question">Question</label>
+                  <textarea className="new-textarea" onChange={this.handleChange} id="questionnew"  name="question" placeholder="Type Your question" rows="4"></textarea>
+              </div>
+              <div className="new-button">
+                  <button className="new-button-create" onClick={this.handleSubmit}>Create</button>
+              </div>
             </div>
         </div>
         );

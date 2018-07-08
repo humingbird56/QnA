@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios'
 import './Home.css'
 import Avatar from './Avatar'
-import helpers from "../helpers";
-
+import New from '../New/New'
 class Home extends Component {
     constructor(props){
         super(props)
@@ -78,6 +77,7 @@ class Home extends Component {
 render() {
     return (
         <div className="container home">
+        <New/>
           {this.renderHome()}
         </div>
         );

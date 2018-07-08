@@ -86,11 +86,11 @@ module.exports={
           id: dataUser.dataValues.id,
           username: dataUser.dataValues.username,
           email: dataUser.dataValues.email
-        },secret)
+        },process.env.JWT_SECRET)
         res.send({token})
       }
     })
-    .catch(err => res.send(err))
+    .catch(err => console.log(err))
   },
 
   getUser(req, res){

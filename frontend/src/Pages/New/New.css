@@ -1,37 +1,27 @@
 .new{
-    background: linear-gradient(white,#d3d8e8);
-    height: 380px;
 }
 .new-body{
     border: 1px solid #bdb8b8;    
-    margin-left: 30%;
-    margin-top: 30px;   
-    padding: 10px;
     width: 50%;
+    margin: auto;
+    margin-top: 5%
 }
 
 .input{
-    margin-bottom: 20px;
-    margin-left: 30px;  
     border-radius: 5px;
     width: 60%;
-    height: 30px;
+    font-size: 18px;
 }
 .label-message{
     vertical-align: top;
 }
 .new-textarea{
     width: 60%;
-    height: 80px;
-    margin-left: 50px;
 }
 .message{
-    height: 150px;
     size: 10;
 }
 .new-button-create{
-    width: 100px;
-    height: 30px;
     border-radius: 5px;
     color: white;
     background-color: rgb(0, 174, 255)    
@@ -40,7 +30,10 @@
     text-align: center;
 }
 .new-label{
-    width: 85px;
-    display: inline-block;
+    margin: 5%;
+}
+.content{
+  display: flex;
+  align-items: center;
 }
 /*New.js --------------------------------------------------------  */
