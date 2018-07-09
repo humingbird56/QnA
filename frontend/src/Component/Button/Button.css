@@ -1,0 +1,59 @@
+.primary{
+  background-color: rgb(0, 174, 255);
+}
+
+.success{
+  background-color:lightgreen;
+}
+
+.big{
+  font-size: 30px;
+}
+
+.medium{
+  font-size: 20px;
+}
+
+.small{
+  font-size: 10px;
+}
+
+.round-border{
+  border-radius: 10px;
+}
+
+.medium-border{
+  border-radius: 5px;
+}
+
+.text-white{
+  color:white;
+}
+
+.text-black{
+  color:black;
+}
+
+.widest{
+  width: 75%;
+}
+
+.wider{
+  width: 50%;
+}
+
+.wide{
+  width: 25%;
+}
+
+.margin-small{
+  margin: 2%;
+}
+
+.margin-medium{
+  margin: 5%;
+}
+
+.margin-big{
+  margin:10%;
+}

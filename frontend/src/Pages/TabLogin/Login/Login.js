@@ -2,6 +2,7 @@ import React from 'react';
 import "./Login.css";
 import axios from 'axios';
 import helpers from "../../helpers";
+import Button from '../../../Component/Button/Button'
 
 class Login extends React.Component{
 	constructor(props) {
@@ -72,7 +73,8 @@ render() {
 										<div className="login-body-password">
 										<input type="password" id="loginpassword" name="loginpassword" className="login-email" placeholder="password" value={this.state.loginPassword} onChange={this.handleChange}/>
 										</div>
-										<button className="login-button" type="submit" onClick={this.handleSubmit}>Sign In</button>
+                    <Button className={'medium primary medium-border text-white wide margin-small'} text={'Sign in'} onClick={this.handleSubmit}/>
+										{/* <button className="login-button" type="submit" onClick={this.handleSubmit}>Sign In</button> */}
 								</div>
 						</div>
 				</div>
