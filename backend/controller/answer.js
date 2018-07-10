@@ -1,6 +1,7 @@
 const answer = require('../models').answer;
 const jwt = require('jsonwebtoken')
 
+
 module.exports = {
   list(req, res) {
     return answer.findAll({

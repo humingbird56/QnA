@@ -1,5 +1,6 @@
 const question = require('../models').question;
 const model = require('../models')
+
 module.exports = {
   list(req, res) {
     return question.findAll({

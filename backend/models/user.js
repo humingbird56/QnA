@@ -5,7 +5,8 @@ module.exports = (sequelize, DataTypes) => {
     firstname: DataTypes.STRING,
     lastname: DataTypes.STRING,
     password: DataTypes.STRING,
-    email: DataTypes.STRING
+    email: DataTypes.STRING,
+    typedEmail: DataTypes.STRING
   });
     user.associate = (models) => {
       user.hasMany(models.question, {

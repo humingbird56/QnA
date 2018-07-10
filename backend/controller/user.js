@@ -1,20 +1,11 @@
 const jwt = require('jsonwebtoken')
 const db =require('../models')
 const user = require('../models').user;
+const emailHelper = require('../Helpers/Email')
 
 module.exports={
   signUp(req, res) {
-    let email = req.body.email
-    let front = email.split('@')[0]
-    let back = email.split('@')[1]
-    let emailFinal = ''
-    if (back === 'gmail.com'){
-      let userWithoudDot = front.split('.').join('')
-      emailFinal = userWithoudDot + '@gmail.com'
-    } else {
-      emailFinal = req.body.email
-    }
-    console.log('aaaaa', emailFinal)
+    const email = emailHelper(req.body.email)
     db.user.findOne({
       where: {
         $or:[
@@ -22,48 +13,40 @@ module.exports={
             username: req.body.username
           },
           {
-            email: emailFinal
+            email: email
           }
         ]
       }
     })
     .then(found =>{
       if(found) {
-        if (found.email === emailFinal || found.username === req.body.username)
+        if (found.email === email || found.username === req.body.username)
           return res.send('email or username already used')
       }
         db.user.create({
           username:req.body.username,
           firstname: req.body.firstname,
           lastname: req.body.lastname,
-          email: emailFinal,
+          email: email,
+          typedEmail: req.body.email,
           password: req.body.password
         })
         .then(dataUser => {
-          var token = jwt.sign({
+          const token = jwt.sign({
             id: dataUser.dataValues.id,
             username: dataUser.dataValues.username,
             firstname: dataUser.dataValues.firstname,
-            email: dataUser.dataValues.email
+            email: dataUser.dataValues.email,
+            typedEmail: dataUser.dataValues.typedEmail
           }, process.env.JWT_SECRET)
           res.send({token})
         })
-        .catch(err => res.send(err))
     })
-    .catch(err => res.send(err))
+    .catch(err => console.log(err))
   },
 
   signIn(req, res){
-    var email = req.body.email
-    var front = email.split('@')[0]
-    var back = email.split('@')[1]
-  
-    if (back === 'gmail.com'){
-      let userWithoudDot = front.split('.').join('')
-      var emailFinal = userWithoudDot + '@gmail.com'
-    } else {
-      var emailFinal = req.body.email
-    }
+    const email = emailHelper(req.body.email)
     db.user.findOne({
       where:{
         $or:[
@@ -71,7 +54,7 @@ module.exports={
             username: req.body.username
           },
           {
-            email: emailFinal
+            email: email
           }
         ]
       }
@@ -85,7 +68,9 @@ module.exports={
         let token = jwt.sign({
           id: dataUser.dataValues.id,
           username: dataUser.dataValues.username,
-          email: dataUser.dataValues.email
+          firstname: dataUser.dataValues.firstname,
+          email: dataUser.dataValues.email,
+          typedEmail: dataUser.dataValues.typedEmail
         },process.env.JWT_SECRET)
         res.send({token})
       }

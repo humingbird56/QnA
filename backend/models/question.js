@@ -2,7 +2,8 @@
 module.exports = (sequelize, DataTypes) => {
   var question = sequelize.define('question', {
     userId: DataTypes.INTEGER,
-    question: DataTypes.STRING
+    question: DataTypes.STRING,
+    like: DataTypes.INTEGER,
   });
 
   question.associate = (models) => {
