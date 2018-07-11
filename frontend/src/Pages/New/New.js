@@ -25,18 +25,19 @@ class New extends React.Component {
         event.preventDefault();
     
         const payload = {
-        question: this.state.question
-        };
+        question: this.state.question,
+      };
     
         axios
-        .post(`${process.env.REACT_APP_API_URL}/question`, payload)
+        .post(`${process.env.REACT_APP_API_URL}/question`, payload, {
+          headers: { token: localStorage.getItem('token') }
+      })
         .then(response => {
             // NOTIFY ASKER
             console.log(response.data);
-            alert(`New notes posted`);
             // REDIRECT TO ANSWER
-            this.props.history.push("/home");
-        })
+            window.location.reload();
+          })
         .catch(error => {
             console.log(error);
             alert(`${error}`);

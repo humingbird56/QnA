@@ -22,7 +22,8 @@ const helpers = {
       // console.log(decoded)
       return {
         id: decoded.id,
-        name: decoded.name
+        username: decoded.username,
+        typedEmail: decoded.typedEmail
       }
     } else {
       return null

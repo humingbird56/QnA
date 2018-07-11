@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Present from '../Present/Present'
-import Avatarprofile from './Avatar'
+import Avatarprofile from '../../Component/Avatar/Avatar'
 import Profilecontent from './Content'
 
 class Profile extends Component {

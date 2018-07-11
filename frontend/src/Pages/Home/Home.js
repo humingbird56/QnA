@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios'
 import './Home.css'
-import Avatar from './Avatar'
+import Avatar from '../../Component/Avatar/Avatar'
 import New from '../New/New'
 class Home extends Component {
     constructor(props){
