@@ -1,5 +1,5 @@
 const question = require('../models').question;
-const model = require('../models')
+const jwt = require('jsonwebtoken')
 
 module.exports = {
   list(req, res) {
@@ -32,10 +32,11 @@ module.exports = {
       .catch(error => res.status(400).send(error));
   },  
   create(req, res) {
+    const decoded = jwt.verify(req.headers.token, process.env.JWT_SECRET);
     return question
       .create({
         question: req.body.question,
-        userId:req.body.userId
+        userId: decoded.id
       })
       .then(data => res.status(201).send(data))
       .catch(err => res.status(400).send(err));
@@ -74,4 +75,22 @@ module.exports = {
       })
       .catch(error => res.status(400).send(error));
   },
+  like(req, res){
+    return question.findOne({
+      where: {
+        id: req.body.questionId
+      }
+    })
+    .then( dataQuestion => {
+      question.update({
+        like: dataQuestion.like + 1
+      }, {
+        where: {
+        id: dataQuestion.id
+      }
+    })
+    res.send('like')  
+  })
+  .catch(err => console.log(err))
+  }
 };

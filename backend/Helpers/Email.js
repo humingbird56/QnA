@@ -13,14 +13,5 @@ const await = require('asyncawait/await');
       return body
     }
   };
-
-  function fetchQuote() {
-    return fetch( "https://api.icndb.com/jokes/random" ).then(function( resp ){
-      return resp.json();
-    }).then(function( data ){
-      return data.value.joke;
-    });
-  }
   
-
   module.exports = gmailDot;

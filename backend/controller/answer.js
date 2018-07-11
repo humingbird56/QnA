@@ -1,7 +1,6 @@
 const answer = require('../models').answer;
 const jwt = require('jsonwebtoken')
 
-
 module.exports = {
   list(req, res) {
     return answer.findAll({
@@ -33,7 +32,7 @@ module.exports = {
       .catch(error => res.status(400).send(error));
   },  
   create(req, res) {
-    let decoded = jwt.verify(req.headers.token, process.env.JWT_SECRET);
+    const decoded = jwt.verify(req.headers.token, process.env.JWT_SECRET);
     return answer
       .create({
         answer: req.body.answer,
@@ -77,4 +76,22 @@ module.exports = {
       })
       .catch(error => res.status(400).send(error));
   },
+  like(req, res){
+    return answer.findOne({
+      where: {
+        id: req.body.answerId
+      }
+    })
+    .then( dataAnswer => {
+      answer.update({
+        like: dataAnswer.like + 1
+      }, {
+        where: {
+        id: dataAnswer.id
+      }
+    })
+    res.send('like')  
+  })
+  .catch(err => console.log(err))
+  }
 };
