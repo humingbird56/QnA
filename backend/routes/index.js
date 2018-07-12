@@ -14,13 +14,14 @@ router.get('/answer/:id', answerController.retrieve);
 router.post('/answer', answerController.create);
 router.put('/answer/:id', answerController.update);
 router.delete('/answer/:id', answerController.destroy);
+router.post('/likeanswer', answerController.like)
 
 router.get('/question', questionController.list);
 router.get('/question/:id', questionController.retrieve);
 router.post('/question', questionController.create);
 router.put('/question/:id', questionController.update);
 router.delete('/question/:id', questionController.destroy);
-
+router.post('/likequestion', questionController.like)
 module.exports = router;
 
 
