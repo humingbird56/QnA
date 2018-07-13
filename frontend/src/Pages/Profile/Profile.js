@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Present from '../Present/Present'
 import Avatarprofile from '../../Component/Avatar/Avatar'
 import Profilecontent from './Content'
 
@@ -15,7 +14,6 @@ render() {
                     <Profilecontent/>
                 </div>
             </div>
-            <Present/>
         </div>
         );
     }   

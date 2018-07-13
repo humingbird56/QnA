@@ -3,6 +3,7 @@ import {BrowserRouter as Router, Route, Redirect} from 'react-router-dom';
 import Tab from './Pages/TabLogin/Tab';
 import Home from './Pages/Home/Home';
 import Profile from './Pages/Profile/Profile';
+import Navbar from './Component/Navbar/Navbar'
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route
@@ -26,6 +27,7 @@ class RouteList extends Component {
   render() {
     return (
       <div className="mainContainer">
+        <Navbar/>
         <Router>
           <div>
             <Route exact path="/" component={Tab} />
