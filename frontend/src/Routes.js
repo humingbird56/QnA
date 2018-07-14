@@ -14,7 +14,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
       ) : (
         <Redirect
           to={{
-            pathname: "/",
+            pathname: "/tabs",
             state: { from: props.location },
           }}
         />
@@ -23,14 +23,25 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
   />
 );
 
+
 class RouteList extends Component {
+
+  navbar = () => {
+    if (localStorage.getItem('token') !== null){
+      return <Navbar/>
+    } else {
+      return null
+    }
+  }
+
   render() {
     return (
       <div className="mainContainer">
-        <Navbar/>
+        {/* <Navbar/> */}
+        {this.navbar()}
         <Router>
           <div>
-            <Route exact path="/" component={Tab} />
+            <Route exact path="/tabs" component={Tab} />
             <PrivateRoute exact path="/home" component={ Home } />
             <PrivateRoute path='/profile' component={Profile} />
           </div>
